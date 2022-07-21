@@ -1,0 +1,16 @@
+import { protocol } from 'electron';
+import { join } from 'path';
+
+const IS_WINDOWS = process.platform.startsWith('win');
+const FILE_PREFIX = IS_WINDOWS ? 'file:///' : 'file://';
+export default function (directory: string) {
+  protocol.interceptFileProtocol('file', (request, callback) => {
+    const filePath = splitFilePrefix(request.url);
+    callback(isPathFromRoot(filePath) ? filePath : join(directory, (IS_WINDOWS ? filePath.substring(3) : filePath)));
+  });
+}
+
+const splitFilePrefix = (pathName: string) =>
+  pathName.startsWith(FILE_PREFIX) ? pathName.split(FILE_PREFIX)[1] : pathName;
+
+const isPathFromRoot = (pathName: string) => pathName.includes('app.asar');

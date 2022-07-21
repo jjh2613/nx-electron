@@ -23,6 +23,12 @@
       "description": "Frontend project that needs to access this application.",
       "x-prompt": "What's the name of the web app in your workspace you'd like to use inside Electron?"
     },
+    "frontendProjectType": {
+      "type": "string",
+      "description": "Frontend project Type",
+      "default": "default",
+      "x-prompt": "What's your app's Project Type ( angular / react / nextjs / default )"
+    },
     "addProxy": {
       "type": "boolean",
       "default": false,

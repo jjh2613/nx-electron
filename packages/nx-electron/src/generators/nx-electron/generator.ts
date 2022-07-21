@@ -31,16 +31,16 @@ export interface NormalizedSchema extends Schema {
   parsedTags: string[];
 }
 
-function getBuildConfig(project: ProjectConfiguration, options: NormalizedSchema): TargetConfiguration {
+function getBuildConfig(
+  project: ProjectConfiguration,
+  options: NormalizedSchema
+): TargetConfiguration {
   return {
     executor: 'nx-electron:build',
     outputs: ['{options.outputPath}'],
     options: {
       outputPath: joinPathFragments('dist', options.appProjectRoot),
-      main: joinPathFragments(
-        project.sourceRoot,
-        'main.ts'
-      ),
+      main: joinPathFragments(project.sourceRoot, 'main.ts'),
       tsConfig: joinPathFragments(options.appProjectRoot, 'tsconfig.app.json'),
       assets: [joinPathFragments(project.sourceRoot, 'assets')],
     },
@@ -82,8 +82,8 @@ function getPackageConfig(options: NormalizedSchema): TargetConfiguration {
       name: options.name,
       frontendProject: options.frontendProject,
       outputPath: 'dist/packages',
-      prepackageOnly: true
-    }
+      prepackageOnly: true,
+    },
   };
 }
 
@@ -93,8 +93,8 @@ function getMakeConfig(options: NormalizedSchema): TargetConfiguration {
     options: {
       name: options.name,
       frontendProject: options.frontendProject,
-      outputPath: 'dist/executables'
-    }
+      outputPath: 'dist/executables',
+    },
   };
 }
 
@@ -130,7 +130,10 @@ function updateConstantsFile(tree: Tree, options: NormalizedSchema) {
   tree.write(
     join(options.appProjectRoot, 'src/app/constants.ts'),
     stripIndents`export const rendererAppPort = 4200;
-    export const rendererAppName = '${options.frontendProject || options.name.split('-')[0] + '-web'}';
+    export const rendererAppName = '${
+      options.frontendProject || options.name.split('-')[0] + '-web'
+    }';
+    export const rendererAppType: 'angular' | 'react' | 'nextjs' | 'default' = '${options.frontendProjectType}';
     export const electronAppName = '${options.name}';
     export const updateServerUrl = 'https://deployment-server-url.com';         // TODO: insert your update server url here
     `
@@ -198,9 +201,7 @@ export async function addLintingToApplication(
     tsConfigPaths: [
       joinPathFragments(options.appProjectRoot, 'tsconfig.app.json'),
     ],
-    eslintFilePatterns: [
-      `${options.appProjectRoot}/**/*.ts`,
-    ],
+    eslintFilePatterns: [`${options.appProjectRoot}/**/*.ts`],
     skipFormat: true,
     setParserOptionsProject: options.setParserOptionsProject,
   });
@@ -254,6 +255,12 @@ export async function generator(tree: Tree, schema: Schema) {
   return runTasksInSerial(...tasks);
 }
 
+function normalizeFrontendProjectType(frontendProjectType: string) {
+  return frontendProjectType === 'react' || frontendProjectType === 'nextjs'
+    ? frontendProjectType
+    : 'default'; // angular is default
+}
+
 function normalizeOptions(host: Tree, options: Schema): NormalizedSchema {
   const { appsDir } = getWorkspaceLayout(host);
 
@@ -275,6 +282,9 @@ function normalizeOptions(host: Tree, options: Schema): NormalizedSchema {
     frontendProject: options.frontendProject
       ? names(options.frontendProject).fileName
       : undefined,
+    frontendProjectType: normalizeFrontendProjectType(
+      options.frontendProjectType
+    ),
     appProjectRoot,
     parsedTags,
     linter: options.linter ?? Linter.EsLint,
