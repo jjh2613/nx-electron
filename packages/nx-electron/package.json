@@ -1,9 +1,9 @@
 {
-  "name": "nx-electron",
+  "name": "nx-electron-react",
   "version": "13.2.1",
   "main": "src/index.js",
-  "description": "Electron Plugin for Nx",
-  "author": "Benny Megidish",
+  "description": "Electron Plugin for Nx (React)",
+  "author": "jjh2613",
   "license": "Apache-2.0",
   "generators": "./generators.json",
   "schematics": "./generators.json",
@@ -15,10 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bennymeg/nx-electron.git"
+    "url": "git+https://github.com/jjh2613/nx-electron-react.git"
   },
   "bugs": {
-    "url": "https://github.com/bennymeg/nx-electron/issues"
+    "url": "https://github.com/jjh2613/nx-electron-react/issues"
   },
   "scripts": {
     "lint": "nx lint nx-electron",

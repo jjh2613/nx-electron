@@ -2,6 +2,27 @@
 
 <div align="center">
 
+
+# Nx Electron React
+
+This project is nx electron plugin for react and nextjs.
+
+Thanks to nx-electron(https://github.com/bennymeg/nx-electron).
+
+This project has just additional few commits on react and nextjs.
+
+This project just cared react and nextjs not angular in this project.
+
+I didn't request PR to the origin project because I don't have experience on angular.
+
+I don't have enough time to contribute to origin project after completely fitting this project to angular.
+
+I will go on fitting angular and request PR later.
+
+I recommend you use original nx-electron, not this project.
+
+---
+
 # Nx Electron
 
 Electron builders and schematics for Nrwl Nx platform.

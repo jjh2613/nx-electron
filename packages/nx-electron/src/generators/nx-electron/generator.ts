@@ -133,7 +133,9 @@ function updateConstantsFile(tree: Tree, options: NormalizedSchema) {
     export const rendererAppName = '${
       options.frontendProject || options.name.split('-')[0] + '-web'
     }';
-    export const rendererAppType: 'angular' | 'react' | 'nextjs' | 'default' = '${options.frontendProjectType}';
+    export const rendererAppType: 'angular' | 'react' | 'nextjs' | 'default' = '${
+      options.frontendProjectType
+    }';
     export const electronAppName = '${options.name}';
     export const updateServerUrl = 'https://deployment-server-url.com';         // TODO: insert your update server url here
     `
@@ -256,7 +258,9 @@ export async function generator(tree: Tree, schema: Schema) {
 }
 
 function normalizeFrontendProjectType(frontendProjectType: string) {
-  return frontendProjectType === 'react' || frontendProjectType === 'nextjs'
+  return frontendProjectType === 'react' ||
+    frontendProjectType === 'nextjs' ||
+    frontendProjectType === 'angular'
     ? frontendProjectType
     : 'default'; // angular is default
 }
