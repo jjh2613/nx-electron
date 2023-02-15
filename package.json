@@ -53,6 +53,8 @@
   },
   "dependencies": {
     "@angular/core": "13.3.4",
+    "dotenv": "^16.0.3",
+    "electron-builder": "^23.6.0",
     "tslib": "^2.4.0"
   }
 }

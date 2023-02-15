@@ -1,6 +1,6 @@
 {
   "name": "nx-electron-react",
-  "version": "14.0.1",
+  "version": "14.0.3",
   "main": "src/index.js",
   "description": "Electron Plugin for Nx (React)",
   "author": "jjh2613",

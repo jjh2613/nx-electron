@@ -18,6 +18,12 @@
       "description": "Frontend project that needs to access this application.",
       "x-prompt": "What's the name the frontend application you would like to package?"
     },
+    "subFrontendProject": {
+      "type": "string",
+      "description": "Sub Frontend project that needs to access this application.",
+      "x-prompt": "What's the name the frontend application you would like to package?",
+      "default": null
+    },
     "prepackageOnly": {
       "type": "boolean",
       "description": "Only prepackage the application.",
