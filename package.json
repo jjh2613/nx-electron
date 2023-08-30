@@ -54,7 +54,7 @@
     "utf-8-validate": "^5.0.9"
   },
   "dependencies": {
-    "@angular/core": "15.2.5",
+    "@angular/core": "15.2.8",
     "tslib": "^2.4.1"
   }
 }

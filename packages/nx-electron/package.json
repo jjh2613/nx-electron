@@ -46,10 +46,12 @@
     "executors"
   ],
   "peerDependencies": {
-    "@nrwl/workspace": "^15.9.2",
+    "@nrwl/js": "^15.4.5",
+    "@nrwl/workspace": "^15.4.5",
     "electron": "*"
   },
   "dependencies": {
+    "@nrwl/js": "^15.4.5",
     "circular-dependency-plugin": "^5.2.2",
     "copy-webpack-plugin": "^11.0.0",
     "electron-builder": "^23.6.0",
