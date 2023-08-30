@@ -1,9 +1,9 @@
 {
-  "name": "nx-electron",
-  "version": "15.0.0",
+  "name": "nx-electron-react",
+  "version": "15.9.2",
   "main": "src/index.js",
-  "description": "Electron Plugin for Nx",
-  "author": "Benny Megidish",
+  "description": "Electron Plugin for Nx (jjh2613 Customized)",
+  "author": "jjh2613",
   "license": "Apache-2.0",
   "generators": "./generators.json",
   "schematics": "./generators.json",
